@@ -1,0 +1,9 @@
+{
+  "name": "AI Restaurant",
+  "short_name": "Restaurant",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff5722",
+  "orientation": "portrait"
+}

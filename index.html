@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Restaurant</title>
+    <link rel="stylesheet" href="./style.css?test=123456">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header class="hero">
+    <div class="hero-content">
+      <h1 id="heroTitle">🍽️ AI Restaurant</h1>
+      <p id="heroText">
+    Delicious Food • Fast Delivery • Easy Online Booking
+</p>
+
+        <a href="#menu" class="btn">View Menu</a>
+        <button class="login-btn">Login</button>
+        <button class="book-table-btn">🍽️ Book a Table</button>
+    </div>
+    </header>
+    <div class="cart-icon" id="cartBtn">
+    🛒 <span id="cartCount">0</span>
+</div>
+<div class="wishlist-icon" id="wishlistBtn">
+    ❤️ <span id="wishlistCount">0</span>
+</div>
+<div class="dark-mode-btn" id="darkModeBtn">
+    🌙
+</div>
+  
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 Search food...">
+</div>
+<div class="filter-buttons">
+
+    <button id="allBtn" class="filter-btn" data-filter="all">
+    🍽 All
+</button>
+
+    <button id="pizzaBtn" class="filter-btn" data-filter="pizza">
+    🍕 Pizza
+</button>
+
+    <button id="burgerBtn" class="filter-btn" data-filter="burger">
+    🍔 Burger
+</button>
+
+    <button id="pastaBtn" class="filter-btn" data-filter="pasta">
+    🍝 Pasta
+</button>
+
+</div>
+<div class="price-filters">
+
+    <button id="under100Btn"
+        class="price-btn"
+        onclick="alert('Button Clicked!')"
+        data-price="under100">
+        💰 Under ₹100
+    </button>
+
+    <button id="between100Btn"
+        class="price-btn"
+        data-price="100to150">
+        💰 ₹100–₹150
+    </button>
+
+    <button id="above150Btn"
+        class="price-btn"
+        data-price="above150">
+        💰 Above ₹150
+    </button>
+
+</div>
+
+<p id="noResults" style="display: none;">
+    😔 No food found!
+</p>
+
+<section id="menu" class="menu">
+    <h2>🍽 Our Special Menu</h2>
+    
+    <div class="menu-container">
+
+<div class="card" id="pizza-card" data-food-price="199">
+    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" alt="Pizza">
+
+    <h3>🍕 Pizza</h3>
+
+<p>Cheesy Pizza - ₹199</p>
+
+<button class="wishlist-btn">🤍</button>
+
+<a href="https://wa.me/919721045356?text=Hello%20I%20want%20to%20order%20Pizza." target="_blank">
+    <button class="order-btn">
+        Order Now
+    </button>
+</a>
+    <button class="cart-btn" data-name="Pizza" data-price="199">
+        🛒 Add to Cart
+    </button>
+    <button class="review-btn">
+    ⭐ Reviews
+</button>
+</div>
+
+<div class="card" id="burger-card" data-food-price="99">
+  <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Burger">
+
+  <h3>🍔 Burger</h3>
+
+  <p>Veg Burger - ₹99</p>
+
+  <button class="wishlist-btn">
+      🤍
+  </button>
+
+  <a href="https://wa.me/919721045356?text=Hello!%20I%20want%20to%20order%20Burger." target="_blank">
+      <button class="order-btn">Order Now</button>
+  </a>
+
+  <button class="cart-btn" data-name="Burger" data-price="99">
+      🛒 Add to Cart
+  </button>
+
+</div>
+
+<div class="card" id="pasta-card" data-food-price="149">
+  <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500" alt="Pasta">
+
+  <h3>🍝 Pasta</h3>
+
+  <p>White Sauce Pasta - ₹149</p>
+
+  <button class="wishlist-btn">
+      🤍
+  </button>
+
+  <a href="https://wa.me/919721045356?text=Hello!%20I%20want%20to%20order%20Pasta." target="_blank">
+      <button class="order-btn">Order Now</button>
+  </a>
+
+  <button class="cart-btn" data-name="Pasta" data-price="149">
+      🛒 Add to Cart
+  </button>
+
+</div>
+</div>
+</section>
+<!-- Order Management Section -->
+
+<section class="order-management-section">
+
+    <h2>📦 Order Management</h2>
+    <div class="order-management-box">
+
+    <p>Manage customer orders.</p>
+
+    <button id="viewOrdersBtn">
+        📋 View Orders
+    </button>
+
+    <button id="updateStatusBtn">
+        🚚 Update Status
+    </button>
+
+</div>
+
+</section>
+<!-- Food Management Section -->
+
+<section class="food-management-section">
+
+    <h2>🍔 Food Management</h2>
+    <div class="food-management-box">
+
+    <p>Manage your restaurant menu items.</p>
+
+    <button id="addFoodBtn">
+        ➕ Add New Food
+    </button>
+
+    <button id="manageFoodBtn">
+        🍕 Manage Foods
+    </button>
+
+</div>
+
+</section>
+<!-- Admin Dashboard Section -->
+
+<section class="admin-section">
+
+    <h2>👨‍💼 Admin Dashboard</h2>
+    <div class="admin-box">
+
+    <p>Restaurant Owner Control Panel</p>
+
+    <button id="adminLoginBtn">
+        🔐 Admin Login
+    </button>
+
+</div>
+
+</section>
+<div id="adminPanel" style="display:none;">
+
+    <h3>🛠️ Admin Controls</h3>
+
+    <button id="adminViewOrdersBtn">
+    📋 View Orders
+</button>
+
+<button id="adminUpdateStatusBtn">
+    🚚 Update Status
+</button>
+<button id="viewCustomersBtn">
+    👥 View Customers
+</button>
+<h4>📊 Analytics Dashboard</h4>
+
+<div id="analyticsBox">
+
+    <p>📦 Total Orders: <span id="totalOrders">0</span></p>
+
+    <p>💰 Total Revenue: ₹<span id="totalRevenue">0</span></p>
+
+    <p>👥 Total Customers: <span id="totalCustomers">0</span></p>
+<p>🍕 Best Seller: <span id="bestSeller">None</span></p>
+</div>
+</div>
+
+<!-- WhatsApp Live Chat Section -->
+
+<section class="whatsapp-section">
+
+    <h2>💬 WhatsApp Live Chat</h2>
+    <div class="whatsapp-box">
+
+    <p>
+        Chat directly with our restaurant team on WhatsApp.
+    </p>
+
+    <a href="https://wa.me/919721045356" target="_blank">
+
+        <button id="whatsappBtn">
+            💬 Chat on WhatsApp
+        </button>
+
+    </a>
+
+</div>
+
+</section>
+<!-- Voice Search Section -->
+
+<section class="voice-search-section">
+
+    <h2>🎤 Voice Search</h2>
+    <div class="voice-search-box">
+
+    <p>Tap the microphone and speak your favorite food.</p>
+
+    <button id="voiceSearchBtn">
+        🎤 Start Voice Search
+    </button>
+
+    <div id="voiceResult"></div>
+
+</div>
+
+</section>
+<!-- Push Notification Section -->
+
+<section class="notification-section">
+
+    <h2>🔔 Get Notifications</h2>
+    <div class="notification-box">
+
+    <p>
+        Enable notifications to get offers, discounts and order updates instantly!
+    </p>
+
+    <button id="enableNotificationBtn">
+        🔔 Enable Notifications
+    </button>
+
+    <div id="notificationMessage"></div>
+
+</div>
+
+</section>
+<!-- Email Confirmation Section -->
+
+<section class="email-section">
+
+    <h2>📧 Email Updates</h2>
+    <div class="email-box">
+
+    <p>Get offers, order updates and special discounts directly in your inbox!</p>
+
+    <input
+        type="email"
+        id="customerEmail"
+        placeholder="Enter your email">
+
+    <button id="subscribeBtn">
+        Subscribe
+    </button>
+
+    <div id="emailMessage"></div>
+
+</div>
+
+</section>
+<!-- AI Chatbot Section -->
+
+<section class="ai-chat-section">
+
+    <h2 id="aiTitle">🤖 AI Food Assistant</h2>
+
+    <div class="ai-chat-box">
+
+        <p id="aiText">
+            Ask our AI Assistant for food recommendations!
+        </p>
+
+    <input
+        type="text"
+        id="aiQuestion"
+        placeholder="Ask: Best pizza? Veg options? Spicy food?">
+
+    <button id="askAiBtn">
+        Ask AI
+    </button>
+
+    <div id="aiResponse"></div>
+
+</div>
+
+</section>
+<!-- QR Menu Section -->
+
+<section class="qr-section">
+
+    <h2>📱 Scan Our Menu</h2>
+    <p>Scan the QR code to view our digital menu instantly.</p>
+
+<img
+    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://yourrestaurant.com"
+    alt="Restaurant QR Code"
+    class="qr-image">
+
+</section>
+<!-- Offers Section -->
+
+<section class="offers-section">
+
+    <h2>🎁 Special Offers</h2>
+    <div class="offers-container">
+
+    <div class="offer-card">
+        <h3>🍕 Flat 20% OFF</h3>
+        <p>Get 20% discount on all pizzas every Friday.</p>
+    </div>
+
+    <div class="offer-card">
+        <h3>🍔 Buy 1 Get 1 Free</h3>
+        <p>Buy one burger and get another absolutely free.</p>
+    </div>
+
+    <div class="offer-card">
+        <h3>🥤 Free Cold Drink</h3>
+        <p>Get a free cold drink on orders above ₹499.</p>
+    </div>
+
+</div>
+
+</section>
+<!-- Best Sellers Section -->
+
+<section class="best-sellers">
+
+    <h2>⭐ Best Sellers</h2>
+<div class="best-sellers-container">
+
+    <div class="best-card">
+        <h3>🔥 Margherita Pizza</h3>
+        <p>Most loved pizza with extra cheese and fresh toppings.</p>
+    </div>
+
+    <div class="best-card">
+        <h3>🔥 Chicken Burger</h3>
+        <p>Customer favorite burger with crispy chicken and special sauce.</p>
+    </div>
+
+    <div class="best-card">
+        <h3>🔥 White Sauce Pasta</h3>
+        <p>Our best-selling creamy Italian pasta.</p>
+    </div>
+
+</div>
+</section>
+<!-- Chef Specials Section -->
+
+<section class="chef-specials">
+
+    <h2>👨‍🍳 Chef's Specials</h2>
+    <div class="specials-container">
+
+    <div class="special-card">
+        <h3>🍕 Special Pizza</h3>
+        <p>Chef's secret recipe with premium cheese and fresh toppings.</p>
+    </div>
+
+    <div class="special-card">
+        <h3>🍔 Royal Burger</h3>
+        <p>Juicy grilled patty with our signature homemade sauce.</p>
+    </div>
+
+    <div class="special-card">
+        <h3>🍝 Italian Pasta</h3>
+        <p>Authentic Italian style pasta prepared by our master chef.</p>
+    </div>
+
+</div>
+
+</section>
+<!-- Opening Hours Section -->
+
+<section class="hours-section">
+
+    <h2>🕒 Opening Hours</h2>
+    <div class="hours-box">
+
+    <p>Monday - Friday: <span>10:00 AM - 10:00 PM</span></p>
+
+    <p>Saturday - Sunday: <span>9:00 AM - 11:00 PM</span></p>
+
+</div>
+
+</section>
+<!-- Google Maps Section -->
+<section class="map-section">
+
+    <h2>📍 Find Us</h2>
+
+    <p>Visit our restaurant and enjoy delicious food with your family and friends.</p>
+
+    <iframe
+        src="https://www.google.com/maps?q=Varanasi,Uttar+Pradesh&output=embed"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+
+</section>
+<footer>
+    <p>© 2026 AI Restaurant | Made with ❤️</p>
+</footer>
+<a href="https://wa.me/919721045356" class="whatsapp-float" target="_blank">
+    💬
+</a>
+<!-- Cart Sidebar -->
+<!-- Cart Popup -->
+<div id="cartPopup" class="cart-popup">
+    <div class="cart-header">
+        <h2>🛒 My Cart</h2>
+    <button id="closeCart" class="close-cart-btn">✕</button>
+    </div>
+
+    <div id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <h3>Total: ₹<span id="cartTotal">0</span></h3>
+    <input
+    type="text"
+    id="couponInput"
+    placeholder="Enter Coupon Code">
+
+<button id="applyCouponBtn">
+    Apply Coupon
+</button>
+
+    <button id="checkoutBtn">Proceed to Checkout</button>
+    <button id="myOrdersBtn">
+    📦 My Orders
+</button>
+</div>
+
+
+<!-- Wishlist Popup -->
+<div class="wishlist-popup" id="wishlistPopup">
+
+    <div class="wishlist-box">
+
+        <span id="closeWishlist">❌</span>
+
+        <h2>❤️ My Wishlist</h2>
+
+        <div id="wishlistItems">
+            <p>No items in wishlist.</p>
+        </div>
+
+    </div>
+
+</div>
+<!-- Order History Popup -->
+
+<div class="orders-popup" id="ordersPopup">
+
+    <div class="orders-box">
+
+        <span id="closeOrders">❌</span>
+
+        <h2>📦 My Orders</h2>
+
+        <div id="ordersList">
+
+            <p>No orders yet.</p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Order Tracking -->
+
+<section class="tracking-section">
+
+    <h2>🚚 Order Tracking</h2>
+
+    <div class="tracking-box">
+
+        <p id="orderStatus">
+            No active order.
+        </p>
+
+    </div>
+
+</section>
+<!-- Checkout Popup -->
+
+<div class="checkout-popup" id="checkoutPopup">
+
+    <div class="checkout-box">
+
+        <span id="closeCheckout">❌</span>
+
+        <h2>🛒 Checkout</h2>
+
+      <input type="text" id="customerName" placeholder="Your Name">
+
+<input type="tel" id="customerPhone" placeholder="Phone Number">
+<input type="email" id="customerEmail" placeholder="Email Address">
+
+        <textarea
+            id="customerAddress"
+            placeholder="Enter Delivery Address"></textarea>
+            <h3>🛒 Order Summary</h3>
+
+<div id="checkoutSummary">
+    <p>No items</p>
+</div>
+<h3>💳 Payment Method</h3>
+
+<select id="paymentMethod">
+
+    <option value="cod">
+        Cash on Delivery
+    </option>
+
+    <option value="upi">
+        UPI Payment
+    </option>
+
+</select>
+<div id="upiBox" style="display: none;">
+
+    <h3>📱 UPI Payment</h3>
+
+    <p>UPI ID: krishna@upi</p>
+
+    <p>Scan QR Code (Coming Soon 🚀)</p>
+
+</div>
+
+        <button id="confirmOrderBtn">
+            Confirm Order
+        </button>
+
+    </div>
+
+</div>
+<!-- Review Popup -->
+
+<div class="review-popup" id="reviewPopup">
+
+    <div class="review-box">
+
+        <span id="closeReview">❌</span>
+
+        <h2>⭐ Customer Reviews</h2>
+
+        <div id="reviewsList">
+
+            <p>No reviews yet.</p>
+
+        </div>
+
+        <input
+            type="text"
+            id="reviewName"
+            placeholder="Your Name">
+            <div class="star-rating">
+
+    <span class="star">⭐</span>
+
+    <span class="star">⭐</span>
+
+    <span class="star">⭐</span>
+
+    <span class="star">⭐</span>
+
+    <span class="star">⭐</span>
+
+</div>
+
+        <textarea
+            id="reviewText"
+            placeholder="Write your review">
+        </textarea>
+
+        <button id="submitReviewBtn">
+            Submit Review
+        </button>
+
+    </div>
+
+</div>
+<!-- Login Popup -->
+
+<div class="login-popup" id="loginPopup">
+
+    <div class="login-box">
+
+        <span class="close-login" id="closeLogin">❌</span>
+
+        <h2 id="loginTitle">Login</h2>
+        <input
+    type="text"
+    id="nameInput"
+    placeholder="Enter Name"
+    style="display: none;"
+>
+
+        <input type="email" id="emailInput" placeholder="Enter Email">
+
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+
+        <button class="login-submit-btn" id="loginSubmitBtn">
+    Login
+</button>
+
+        <p>
+            Don't have an account?
+            <a href="#" id="signupLink">Sign Up</a>
+        </p>
+
+    </div>
+
+</div>
+
+<!-- Table Booking Popup -->
+<div class="booking-popup" id="bookingPopup">
+
+    <div class="booking-content">
+
+        <span class="close-booking" id="closeBooking">&times;</span>
+
+        <h2>🍽️ Book Your Table</h2>
+
+        <input type="text" id="bookingName" placeholder="Your Name">
+
+<input type="tel" id="bookingPhone" placeholder="Phone Number">
+
+        <input type="date" id="bookingDate">
+
+        <input type="time" id="bookingTime">
+
+        <input type="number" id="guestCount" placeholder="Number of Guests">
+
+        <textarea id="specialRequest" placeholder="Special Request (Optional)"></textarea>
+
+        <button class="confirm-booking-btn" id="confirmBookingBtn">
+    Confirm Booking
+</button>
+
+    </div>
+
+</div>
+<!-- Floating WhatsApp Button -->
+
+<a
+    href="https://wa.me/919721045356?text=Hello%20I%20want%20to%20know%20more%20about%20your%20restaurant."
+    class="floating-whatsapp"
+    target="_blank"
+>
+    💬
+</a>
+<script src="script.js?v=4"></script>
+</body>
+</html>
