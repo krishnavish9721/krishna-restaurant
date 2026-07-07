@@ -379,7 +379,7 @@ myOrdersBtn.addEventListener("click", () => {
     ordersPopup.style.display = "flex";
 
 });
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+// let orders = JSON.parse(localStorage.getItem("orders")) || [];
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 let selectedRating = 5;
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -1306,7 +1306,7 @@ if (viewOrdersBtn) {
             localStorage.getItem("orders")
         ) || [];
         console.log(restaurantOrders);
-
+       alert(restaurantOrders.length);
         let orderList = "📦 Customer Orders:\n\n";
 
         restaurantOrders.forEach((order, index) => {
