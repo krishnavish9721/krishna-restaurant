@@ -1287,7 +1287,7 @@ let restaurantOrders = JSON.parse(
 ) || [];
 const viewOrdersBtn =
     document.getElementById("viewOrdersBtn");
-    const ateStatusBtn =
+    const updateStatusBtn =
     document.getElementById("updateStatusBtn");
     const adminViewOrdersBtn =
     document.getElementById("adminViewOrdersBtn");
@@ -1313,7 +1313,7 @@ if (viewOrdersBtn) {
             localStorage.getItem("orders")
         ) || [];
         console.log(restaurantOrders);
-        let orderList = "📦 Customer Orders:\n\n";
+        let orderList = "🔥 TEST CUSTOMER ORDERS 🔥\n\n";
 
         restaurantOrders.forEach((order, index) => {
           console.log("Order", index + 1, order);
