@@ -1297,7 +1297,14 @@ const adminUpdateStatusBtn =
     
     const viewCustomersBtn =
     document.getElementById("viewCustomersBtn");
+const adminOrdersPopup =
+    document.getElementById("adminOrdersPopup");
 
+const adminOrdersList =
+    document.getElementById("adminOrdersList");
+
+const closeAdminOrders =
+    document.getElementById("closeAdminOrders");
 if (viewOrdersBtn) {
 
     viewOrdersBtn.addEventListener("click", () => {
@@ -1310,7 +1317,7 @@ if (viewOrdersBtn) {
         let orderList = "📦 Customer Orders:\n\n";
 
         restaurantOrders.forEach((order, index) => {
-alert(JSON.stringify(order));
+          console.log("Order", index + 1, order);
             let items = "No items";
 
 if (order.items) {
@@ -1348,7 +1355,8 @@ if (order.items) {
 
         }
 
-        alert(orderList);
+        adminOrdersList.innerHTML = `<pre>${orderList}</pre>`;
+adminOrdersPopup.style.display = "flex";
 
     });
 
@@ -1408,6 +1416,15 @@ if (adminUpdateStatusBtn) {
     adminUpdateStatusBtn.addEventListener("click", () => {
 
         updateStatusBtn.click();
+
+    });
+
+}
+if (closeAdminOrders) {
+
+    closeAdminOrders.addEventListener("click", () => {
+
+        adminOrdersPopup.style.display = "none";
 
     });
 
