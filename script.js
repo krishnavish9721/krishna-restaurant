@@ -547,7 +547,9 @@ orders.push({
 
     items: [...cart],
 
-    status: "🟡 Preparing"
+    status: "🟡 Preparing",
+    
+    total: Number(cartTotal.textContent)
 
 });
 
@@ -1500,8 +1502,7 @@ if (totalRevenue) {
 
             order.items.forEach((item) => {
 
-                revenue +=
-                    item.price * item.quantity;
+                revenue += order.total || (item.price * item.quantity);
 
             });
 
