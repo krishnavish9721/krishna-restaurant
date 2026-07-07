@@ -1310,7 +1310,7 @@ if (viewOrdersBtn) {
         let orderList = "📦 Customer Orders:\n\n";
 
         restaurantOrders.forEach((order, index) => {
-
+alert(JSON.stringify(order));
             let items = "No items";
 
 if (order.items) {
