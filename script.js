@@ -1315,9 +1315,13 @@ if (viewOrdersBtn) {
 
 if (order.items) {
 
+    if (order.items && Array.isArray(order.items)) {
     items = order.items
-        .map(item => item.name)
+        .map(item => item.name || "Unknown")
         .join(", ");
+} else {
+    items = "No items";
+}
 
 }
 
