@@ -1313,7 +1313,6 @@ if (viewOrdersBtn) {
             localStorage.getItem("orders")
         ) || [];
         console.log(restaurantOrders);
-       alert(restaurantOrders.length);
         let orderList = "📦 Customer Orders:\n\n";
 
         restaurantOrders.forEach((order, index) => {
