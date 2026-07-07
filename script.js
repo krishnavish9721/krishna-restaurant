@@ -1,8 +1,5 @@
-alert("JS START HO GAYA");
-alert("🔥 TEST ALERT 999 🔥");
-alert("STYLE COUNT = " + document.styleSheets.length);
+
 let discount = 0;
-alert("STEP 1");
 // Welcome message
 console.log("Welcome to AI Restaurant Website!");
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,7 +34,33 @@ priceButtons.forEach((button) => {
 
     button.addEventListener("click", () => {
 
-        alert("Price Filter Working! 🔥");
+        const filter = button.dataset.price;
+
+        let visibleCards = 0;
+
+        cards.forEach((card) => {
+
+            const price = Number(card.dataset.foodPrice);
+
+            if (
+    filter === "all" ||
+    (filter === "under100" && price < 100) ||
+    (filter === "100to150" && price >= 100 && price <= 150) ||
+    (filter === "above150" && price > 150)
+) {
+    card.style.display = "block";
+    visibleCards++;
+} else {
+    card.style.display = "none";
+}
+
+        });
+
+        if (visibleCards === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
 
     });
 
@@ -169,13 +192,9 @@ function removeItem(index) {
 }
 updateCart();
 // Login Popup
-alert("STEP 2");
 const loginBtn = document.querySelector(".login-btn");
 const loginPopup = document.getElementById("loginPopup");
 const closeLogin = document.getElementById("closeLogin");
-alert(loginBtn);
-alert(loginPopup);
-alert(closeLogin);
 const signupLink = document.getElementById("signupLink");
 const loginTitle = document.getElementById("loginTitle");
 const loginSubmitBtn = document.getElementById("loginSubmitBtn");
@@ -1328,7 +1347,6 @@ if (order.items) {
     });
 
 }
-alert("STEP 2");
 if (updateStatusBtn) {
 
     updateStatusBtn.addEventListener("click", () => {
