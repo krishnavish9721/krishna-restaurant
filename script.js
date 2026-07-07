@@ -490,7 +490,7 @@ console.log("Orders Length =", orders.length);
         // Naye orders (status ke saath)
         if (order.items) {
 
-            orderHTML += `<p><b>Status:</b> ${order.status}</p>`;
+            orderHTML += `<p><b>Status:</b> ${order.status || "🟡 Preparing"}</p>`;
 
             order.items.forEach((item) => {
 
