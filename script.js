@@ -1,26 +1,36 @@
 
 let discount = 0;
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
 // Welcome message
 console.log("Welcome to AI Restaurant Website!");
 document.addEventListener("DOMContentLoaded", function () {
     alert("🍕 Welcome to AI Restaurant!");
 });
 const searchInput = document.getElementById("searchInput");
+console.log("Script Loaded Successfully");
 const cards = document.querySelectorAll("#menu .card");
 
-searchInput.addEventListener("keyup", function () {
-    const value = searchInput.value.toLowerCase();
+if (searchInput) {
 
-    cards.forEach(card => {
-        const name = card.querySelector("h3").textContent.toLowerCase();
+    searchInput.addEventListener("keyup", function () {
 
-        if (name.includes(value)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+        const value = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+
+            const name = card.querySelector("h3").textContent.toLowerCase();
+
+            if (name.includes(value)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
     });
-});
+
+}
 
 const priceButtons =
     document.querySelectorAll(".price-btn");
@@ -71,7 +81,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartCountElement = document.getElementById("cartCount");
 // Add to Cart Feature
 const cartButtons = document.querySelectorAll(".cart-btn");
-
 
 const cartPopup = document.getElementById("cartPopup");
 const closeCart = document.getElementById("closeCart");
@@ -355,17 +364,17 @@ const checkoutSummary = document.getElementById("checkoutSummary");
 const paymentMethod = document.getElementById("paymentMethod");
 
 const upiBox = document.getElementById("upiBox");
-const reviewPopup = document.getElementById("reviewPopup");
+const rePopup = document.getElementById("rePopup");
 
-const closeReview = document.getElementById("closeReview");
+const closeRe = document.getElementById("closeRe");
 
-const submitReviewBtn = document.getElementById("submitReviewBtn");
+const submitReBtn = document.getElementById("submitReBtn");
 
-const reviewName = document.getElementById("reviewName");
+const reName = document.getElementById("reName");
 
-const reviewText = document.getElementById("reviewText");
+const reText = document.getElementById("reText");
 
-const reviewsList = document.getElementById("reviewsList");
+const resList = document.getElementById("resList");
 const stars = document.querySelectorAll(".star");
 const myOrdersBtn = document.getElementById("myOrdersBtn");
 
@@ -380,7 +389,7 @@ myOrdersBtn.addEventListener("click", () => {
 
 });
 // let orders = JSON.parse(localStorage.getItem("orders")) || [];
-let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+let res = JSON.parse(localStorage.getItem("res")) || [];
 let selectedRating = 5;
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 wishlist.forEach((item) => {
@@ -642,28 +651,29 @@ paymentMethod.addEventListener("change", () => {
     }
 
 });
-const reviewButtons = document.querySelectorAll(".review-btn");
+const reButtons = document.querySelectorAll(".re-btn");
 
-reviewButtons.forEach((button) => {
+reButtons.forEach((button) => {
 
     button.addEventListener("click", () => {
-      showReviews();
+      showRes();
 
-        reviewPopup.style.display = "flex";
+        rePopup.style.display = "flex";
 
     });
 
 });
-closeReview.addEventListener("click", () => {
-
-    reviewPopup.style.display = "none";
-
-});
-submitReviewBtn.addEventListener("click", () => {
+if (closeRe) {
+    closeRe.addEventListener("click", () => {
+        rePopup.style.display = "none";
+    });
+}
+if (submitReBtn) {
+submitReBtn.addEventListener("click", () => {
 
     if (
-        reviewName.value === "" ||
-        reviewText.value === ""
+        reName.value === "" ||
+        reText.value === ""
     ) {
 
         alert("Please fill all details! ❌");
@@ -671,63 +681,64 @@ submitReviewBtn.addEventListener("click", () => {
         return;
     }
 
-    const review = {
+    const re = {
 
-    name: reviewName.value,
+    name: reName.value,
 
-    text: reviewText.value,
+    text: reText.value,
 
     rating: selectedRating
 
 };
 
-    reviews.push(review);
+    res.push(re);
 
     localStorage.setItem(
-        "reviews",
-        JSON.stringify(reviews)
+        "res",
+        JSON.stringify(res)
     );
 
-    reviewsList.innerHTML += `
-        <div class="review-item">
+    resList.innerHTML += `
+        <div class="re-item">
 
-            <h4>${review.name}</h4>
+            <h4>${re.name}</h4>
 
-            <p>${review.text}</p>
+            <p>${re.text}</p>
 
             <hr>
         </div>
     `;
 
-    reviewName.value = "";
+    reName.value = "";
 
-    reviewText.value = "";
+    reText.value = "";
 
-    alert("Review Added Successfully! ⭐");
+    alert("Re Added Successfully! ⭐");
 
 });
-function showReviews() {
+}
+function showRes() {
 
-    reviewsList.innerHTML = "";
+    resList.innerHTML = "";
 
-    if (reviews.length === 0) {
+    if (res.length === 0) {
 
-        reviewsList.innerHTML = "<p>No reviews yet.</p>";
+        resList.innerHTML = "<p>No res yet.</p>";
 
         return;
     }
 
-    reviews.forEach((review) => {
+    res.forEach((re) => {
 
-        reviewsList.innerHTML += `
-            <div class="review-item">
+        resList.innerHTML += `
+            <div class="re-item">
 
                 <h4>
-    ${review.name}
-    ${"⭐".repeat(review.rating || 5)}
+    ${re.name}
+    ${"⭐".repeat(re.rating || 5)}
 </h4>
 
-<p>${review.text}</p>
+<p>${re.text}</p>
 
                 <hr>
 
@@ -754,13 +765,14 @@ darkModeBtn.addEventListener("click", () => {
 
 });
 // Table Booking Popup
-
+console.log("BEFORE TABLE BOOKING");
 const bookTableBtn = document.querySelector(".book-table-btn");
-
+console.log(bookTableBtn);
 const bookingPopup = document.getElementById("bookingPopup");
 const closeBooking = document.getElementById("closeBooking");
 
 bookTableBtn.addEventListener("click", () => {
+  alert("Book Table Clicked");
     bookingPopup.style.display = "flex";
 });
 
@@ -815,6 +827,7 @@ document.getElementById("bookingPhone").value.trim();
     bookingPopup.style.display = "none";
 
 });
+console.log("STEP 1 OK");
 // AI Food Assistant
 
 const askAiBtn = document.getElementById("askAiBtn");
@@ -823,6 +836,7 @@ const aiResponse = document.getElementById("aiResponse");
 const orderStatus =
     document.getElementById("orderStatus");
 
+if (askAiBtn) {
 askAiBtn.addEventListener("click", () => {
 
     const question = aiQuestion.value.toLowerCase();
@@ -978,6 +992,8 @@ else if (
     }
 
 });
+
+}
 // Clear AI response when input is empty
 
 aiQuestion.addEventListener("input", () => {
@@ -1069,7 +1085,7 @@ if ('webkitSpeechRecognition' in window) {
     if (text.includes("pizza")) {
 
         document.getElementById("pizza-card")
-            .scrollIntoView({
+            .scrollInto({
                 behavior: "smooth"
             });
 
@@ -1080,7 +1096,7 @@ if ('webkitSpeechRecognition' in window) {
     const burger =
         document.getElementById("burger-card");
 
-    burger.scrollIntoView({
+    burger.scrollInto({
         behavior: "smooth",
         block: "center"
     });
@@ -1090,7 +1106,7 @@ if ('webkitSpeechRecognition' in window) {
     else if (text.includes("pasta")) {
 
         document.getElementById("pasta-card")
-            .scrollIntoView({
+            .scrollInto({
                 behavior: "smooth"
             });
 
@@ -1118,78 +1134,8 @@ else {
         "❌ Voice Search is not supported in this browser.";
 
 }
-// Multilingual Support
-
-const englishBtn = document.getElementById("englishBtn");
-const hindiBtn = document.getElementById("hindiBtn");
-
-const heroTitle = document.getElementById("heroTitle");
-const heroText = document.getElementById("heroText");
-const aiTitle = document.getElementById("aiTitle");
-
-const aiText = document.getElementById("aiText");
-const allBtn = document.getElementById("allBtn");
-
-const pizzaBtn = document.getElementById("pizzaBtn");
-
-const burgerBtn = document.getElementById("burgerBtn");
-
-const pastaBtn = document.getElementById("pastaBtn");
-if (englishBtn && hindiBtn) {
-/* OLD MULTILANGUAGE CODE - KEEP FOR FUTURE */
-englishBtn.addEventListener("click", () => {
-
-    localStorage.setItem("language", "english");
-
-    heroTitle.innerHTML = "🍽️ AI Restaurant";
-
-    heroText.innerHTML =
-        "Delicious Food • Fast Delivery • Easy Online Booking";
-
-    searchInput.placeholder =
-        "🔍 Search food...";
-
-    allBtn.textContent = "🍽 All";
-
-    pizzaBtn.textContent = "🍕 Pizza";
-
-    burgerBtn.textContent = "🍔 Burger";
-
-    pastaBtn.textContent = "🍝 Pasta";
-aiTitle.textContent = "🤖 AI Food Assistant";
-
-aiText.textContent =
-    "Ask our AI Assistant for food recommendations!";
-});
-hindiBtn.addEventListener("click", () => {
-
-    localStorage.setItem("language", "hindi");
-
-    heroTitle.innerHTML = "🍽️ एआई रेस्टोरेंट";
-
-    heroText.innerHTML =
-        "स्वादिष्ट भोजन • तेज़ डिलीवरी • आसान ऑनलाइन बुकिंग";
-
-    searchInput.placeholder =
-        "🔍 खाना खोजें...";
-
-    allBtn.textContent = "🍽 सभी";
-
-    pizzaBtn.textContent = "🍕 पिज़्ज़ा";
-
-    burgerBtn.textContent = "🍔 बर्गर";
-
-    pastaBtn.textContent = "🍝 पास्ता";
-aiTitle.textContent = "🤖 एआई फूड असिस्टेंट";
-
-aiText.textContent =
-    "खाने की सलाह के लिए हमारे एआई असिस्टेंट से पूछें!";
-});
-
-}
+console.log("STEP 2 OK");
 // Admin Login Demo
-
-const adminLoginBtn =
     document.getElementById("adminLoginBtn");
 
 const adminPanel =
@@ -1217,6 +1163,7 @@ if (adminLoginBtn) {
     });
 
 }
+console.log("STEP 3 OK");
 // Food Management Demo
 
 const addFoodBtn = document.getElementById("addFoodBtn");
@@ -1285,18 +1232,18 @@ if (manageFoodBtn) {
 let restaurantOrders = JSON.parse(
     localStorage.getItem("orders")
 ) || [];
-const viewOrdersBtn =
-    document.getElementById("viewOrdersBtn");
+const OrdersBtn =
+    document.getElementById("OrdersBtn");
     const updateStatusBtn =
     document.getElementById("updateStatusBtn");
-    const adminViewOrdersBtn =
-    document.getElementById("adminViewOrdersBtn");
+    const adminOrdersBtn =
+    document.getElementById("adminOrdersBtn");
 
 const adminUpdateStatusBtn =
     document.getElementById("adminUpdateStatusBtn");
     
-    const viewCustomersBtn =
-    document.getElementById("viewCustomersBtn");
+    const CustomersBtn =
+    document.getElementById("CustomersBtn");
 const adminOrdersPopup =
     document.getElementById("adminOrdersPopup");
 
@@ -1305,15 +1252,15 @@ const adminOrdersList =
 
 const closeAdminOrders =
     document.getElementById("closeAdminOrders");
-if (viewOrdersBtn) {
+if (OrdersBtn) {
 
-    viewOrdersBtn.addEventListener("click", () => {
+    OrdersBtn.addEventListener("click", () => {
 
         restaurantOrders = JSON.parse(
             localStorage.getItem("orders")
         ) || [];
         console.log(restaurantOrders);
-        let orderList = "🔥 TEST CUSTOMER ORDERS 🔥\n\n";
+        let orderList = "📦 Customer Orders:\n\n";
 
         restaurantOrders.forEach((order, index) => {
           console.log("Order", index + 1, order);
@@ -1400,11 +1347,11 @@ if (updateStatusBtn) {
 
 }
 
-if (adminViewOrdersBtn) {
+if (adminOrdersBtn) {
 
-    adminViewOrdersBtn.addEventListener("click", () => {
+    adminOrdersBtn.addEventListener("click", () => {
 
-        viewOrdersBtn.click();
+        OrdersBtn.click();
 
     });
 
@@ -1428,9 +1375,9 @@ if (closeAdminOrders) {
     });
 
 }
-if (viewCustomersBtn) {
+if (CustomersBtn) {
 
-    viewCustomersBtn.addEventListener("click", () => {
+    CustomersBtn.addEventListener("click", () => {
 
         let orders = JSON.parse(
             localStorage.getItem("orders")
