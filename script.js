@@ -772,7 +772,6 @@ const bookingPopup = document.getElementById("bookingPopup");
 const closeBooking = document.getElementById("closeBooking");
 
 bookTableBtn.addEventListener("click", () => {
-  alert("Book Table Clicked");
     bookingPopup.style.display = "flex";
 });
 
