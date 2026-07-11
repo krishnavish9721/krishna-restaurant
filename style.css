@@ -2561,3 +2561,85 @@ body.dark-mode span {
     font-size: 28px;
     cursor: pointer;
 }
+/* ===== Dark Mode Fix for Remaining Sections ===== */
+
+body.dark-mode .whatsapp-section,
+body.dark-mode .voice-search-section,
+body.dark-mode .notification-section,
+body.dark-mode .email-section,
+body.dark-mode .ai-chat-section,
+body.dark-mode .qr-section,
+body.dark-mode .offers-section,
+body.dark-mode .best-sellers,
+body.dark-mode .chef-specials,
+body.dark-mode .hours-section,
+body.dark-mode .map-section,
+body.dark-mode footer {
+    background: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .whatsapp-section h2,
+body.dark-mode .voice-search-section h2,
+body.dark-mode .notification-section h2,
+body.dark-mode .email-section h2,
+body.dark-mode .ai-chat-section h2,
+body.dark-mode .qr-section h2,
+body.dark-mode .offers-section h2,
+body.dark-mode .best-sellers h2,
+body.dark-mode .chef-specials h2,
+body.dark-mode .hours-section h2,
+body.dark-mode .map-section h2,
+body.dark-mode footer,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .whatsapp-box,
+body.dark-mode .voice-search-box,
+body.dark-mode .notification-box,
+body.dark-mode .email-box,
+body.dark-mode .ai-chat-box,
+body.dark-mode .offer-card,
+body.dark-mode .best-card,
+body.dark-mode .special-card,
+body.dark-mode .hours-box {
+    background: #1f1f1f;
+    color: white;
+}
+/* ===== Floating Call Button ===== */
+
+.floating-call {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+
+    width: 60px;
+    height: 60px;
+
+    background: #2196F3;
+
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 28px;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+
+    z-index: 9999;
+
+    transition: 0.3s;
+}
+
+.floating-call:hover {
+    transform: scale(1.1);
+}
