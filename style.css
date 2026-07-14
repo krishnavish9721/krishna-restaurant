@@ -2643,3 +2643,110 @@ body.dark-mode .hours-box {
 .floating-call:hover {
     transform: scale(1.1);
 }
+/* ===== Dark Mode Popup Text Fix ===== */
+
+body.dark-mode .popup-content {
+    background: #1f1f1f;
+    color: #ffffff;
+}
+
+body.dark-mode .popup-content h2,
+body.dark-mode .popup-content h3,
+body.dark-mode .popup-content p,
+body.dark-mode .popup-content label,
+body.dark-mode .popup-content span {
+    color: #ffffff !important;
+}
+
+body.dark-mode .popup-content input,
+body.dark-mode .popup-content textarea,
+body.dark-mode .popup-content select {
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .popup-content input::placeholder,
+body.dark-mode .popup-content textarea::placeholder {
+    color: #cccccc;
+}
+/* ===== Final Dark Mode Popup Fix ===== */
+
+body.dark-mode .popup-content * {
+    color: #ffffff !important;
+}
+
+body.dark-mode .popup-content input,
+body.dark-mode .popup-content textarea,
+body.dark-mode .popup-content select {
+    color: #ffffff !important;
+    background: #2b2b2b !important;
+}
+
+body.dark-mode .popup-content option {
+    color: #ffffff;
+    background: #2b2b2b;
+}
+
+body.dark-mode .close {
+    color: #ffffff !important;
+}
+/* ===== Dark Mode Login + Booking Popup Fix ===== */
+
+body.dark-mode .login-box,
+body.dark-mode .booking-content {
+    background: #1f1f1f !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .login-box *,
+body.dark-mode .booking-content * {
+    color: #ffffff !important;
+}
+
+body.dark-mode .login-box input,
+body.dark-mode .booking-content input,
+body.dark-mode .booking-content textarea,
+body.dark-mode .booking-content select {
+    background: #2b2b2b !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+}
+
+body.dark-mode .login-box input::placeholder,
+body.dark-mode .booking-content input::placeholder,
+body.dark-mode .booking-content textarea::placeholder {
+    color: #cccccc !important;
+}
+/* ===== Final Dark Mode Popup Fix ===== */
+
+body.dark-mode .checkout-box,
+body.dark-mode .wishlist-box,
+body.dark-mode .orders-box {
+    background: #1f1f1f !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .checkout-box *,
+body.dark-mode .wishlist-box *,
+body.dark-mode .orders-box * {
+    color: #ffffff !important;
+}
+
+body.dark-mode .checkout-box input,
+body.dark-mode .checkout-box textarea,
+body.dark-mode .checkout-box select {
+    background: #2b2b2b !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+}
+
+body.dark-mode .checkout-box input::placeholder,
+body.dark-mode .checkout-box textarea::placeholder {
+    color: #cccccc !important;
+}
+
+body.dark-mode .checkout-box option {
+    background: #2b2b2b;
+    color: #ffffff;
+}
